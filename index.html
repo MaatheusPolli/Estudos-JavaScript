@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="7 mini-projetos em JavaScript puro: bateria, relógio, clima, jogo da velha, canvas, quiz e arrasta e solta.">
+    <title>Estudos JavaScript — 7 projetos</title>
+    <style>
+        :root {
+            --bg: #f5f6f8;
+            --card: #ffffff;
+            --text: #1d2330;
+            --muted: #5b6475;
+            --accent: #2563eb;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #12151c;
+                --card: #1c212c;
+                --text: #e8ebf2;
+                --muted: #9aa3b5;
+                --accent: #7aa7ff;
+            }
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 16px;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+        header, main { max-width: 1040px; margin: 0 auto; }
+        h1 { margin: 24px 0 8px; font-size: 1.8rem; }
+        header p { color: var(--muted); margin: 0 0 16px; }
+        .grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            padding-bottom: 32px;
+        }
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .card .thumb {
+            aspect-ratio: 16 / 9;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        .card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .card .body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+        .card .day { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .card h2 { margin: 0; font-size: 1.1rem; }
+        .card p { margin: 0; color: var(--muted); font-size: 0.95rem; flex: 1; }
+        .card code { font-size: 0.8rem; color: var(--accent); }
+        .card a {
+            margin-top: 8px;
+            align-self: flex-start;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .card a:focus-visible, .card a:hover { text-decoration: underline; }
+        footer { color: var(--muted); font-size: 0.85rem; padding: 0 0 24px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Estudos JavaScript</h1>
+        <p>Sete mini-projetos em JavaScript puro, um por dia, com a didática do Bonieky Lacerda. Sem build e sem dependências.</p>
+    </header>
+
+    <main class="grid">
+        <article class="card">
+            <div class="thumb"><img src="01-bateria/print.jpg" alt="Print do projeto Bateria" /></div>
+            <div class="body">
+                <span class="day">Dia 1</span>
+                <h2>Bateria</h2>
+                <p>Bateria tocada pelo teclado, com composição de sequências.</p>
+                <code>keydown · Audio · setTimeout</code>
+                <a href="01-bateria/">Abrir projeto →</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="thumb"><span>Sem print</span></div>
+            <div class="body">
+                <span class="day">Dia 2</span>
+                <h2>Relógio Analógico</h2>
+                <p>Ponteiros analógicos e hora digital.</p>
+                <code>setInterval · Date · transform: rotate</code>
+                <a href="02-relogio-analogico/">Abrir projeto →</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="thumb"><img src="03-clima/print.jpg" alt="Print do projeto Clima" /></div>
+            <div class="body">
+                <span class="day">Dia 3</span>
+                <h2>Clima</h2>
+                <p>Consulta o clima de uma cidade na API da OpenWeather. Pede a sua chave e a guarda só neste navegador.</p>
+                <code>fetch · async/await · API externa</code>
+                <a href="03-clima/">Abrir projeto →</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="thumb"><span>Sem print</span></div>
+            <div class="body">
+                <span class="day">Dia 4</span>
+                <h2>Jogo da Velha</h2>
+                <p>Para dois jogadores, com vitória e empate. Jogável com teclado.</p>
+                <code>estado do jogo · eventos de teclado</code>
+                <a href="04-jogo-da-velha/">Abrir projeto →</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="thumb"><span>Sem print</span></div>
+            <div class="body">
+                <span class="day">Dia 5</span>
+                <h2>Desenhando no Canvas</h2>
+                <p>Quadro para desenhar com mouse, toque ou caneta, com cores e limpeza.</p>
+                <code>Canvas 2D · Pointer Events</code>
+                <a href="05-canvas/">Abrir projeto →</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="thumb"><span>Sem print</span></div>
+            <div class="body">
+                <span class="day">Dia 6</span>
+                <h2>Quiz</h2>
+                <p>Quiz de múltipla escolha com pontuação final.</p>
+                <code>arrays · renderização dinâmica</code>
+                <a href="06-quiz/">Abrir projeto →</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="thumb"><span>Sem print</span></div>
+            <div class="body">
+                <span class="day">Dia 7</span>
+                <h2>Arrasta e Solta</h2>
+                <p>Organize os itens arrastando entre áreas. Funciona também com toque.</p>
+                <code>Drag and Drop API · Pointer Events</code>
+                <a href="07-arrasta-e-solta/">Abrir projeto →</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>Projeto de estudo. Veja a <a href="README.md">documentação</a> e a <a href="LICENSE">licença</a>.</p>
+    </footer>
+</body>
+</html>

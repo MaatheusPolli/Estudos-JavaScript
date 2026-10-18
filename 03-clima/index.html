@@ -10,8 +10,14 @@
 <body>
     <h1>Clima</h1>
 
+    <form class="config">
+        <label for="apiKey">Chave da OpenWeather (salva só neste navegador)</label>
+        <input type="password" id="apiKey" autocomplete="off" placeholder="Cole sua chave" />
+        <button>Salvar chave</button>
+    </form>
+
     <form class="busca">
-        <input type="search" id="searchInput" Placeholder ="Digite o local que deseja" />
+        <input type="search" id="searchInput" placeholder="Digite o local que deseja" />
         <button>Buscar</button>
     </form>
 
@@ -22,7 +28,7 @@
             <div class="temp">
                 <div class="tempTitulo">Temperatura</div>
                 <div class="tempInfo">-- <sup>ºC</sup></div>
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" />
+                <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Ícone do tempo" />
             </div>
             <div class="vento">
                 <div class="ventoTitulo">Vento</div>

@@ -46,18 +46,11 @@ function optionClickEvent(e) {
 };
 
 function finishQuiz(){
-    let points = Math.floor((correctAnswers/questions.length) * 100);
+    let points = calculatePoints(correctAnswers, questions.length);
+    let feedback = getFeedback(points);
 
-    if(points < 30){
-        document.querySelector('.scoreText1').innerHTML = `Tá ruim em?!`;
-        document.querySelector('.scorePct').style.color = '#FF0000';
-    }else if(points >= 30 && points < 70){
-        document.querySelector('.scoreText1').innerHTML = `Quase lá...`;
-        document.querySelector('.scorePct').style.color = '#FFFF00';
-    }else{
-        document.querySelector('.scoreText1').innerHTML = `Parabéns!!`;
-        document.querySelector('.scorePct').style.color = '#0D630D';
-    };
+    document.querySelector('.scoreText1').innerHTML = feedback.text;
+    document.querySelector('.scorePct').style.color = feedback.color;
 
     document.querySelector('.scorePct').innerHTML = `Acertou ${points}%`;
     document.querySelector('.scoreText2').innerHTML = `Você respondeu ${questions.length} questões e acertou ${correctAnswers}`;
