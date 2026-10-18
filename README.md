@@ -22,7 +22,16 @@ Sete mini-projetos em JavaScript puro, um por dia, feitos em 2021 com a didátic
 
 Abra o `index.html` da pasta desejada no navegador. Não há dependências nem build.
 
-**Clima:** precisa de uma chave própria da [OpenWeather](https://openweathermap.org/api). Cole a chave no campo da página; ela fica salva apenas no `localStorage` do seu navegador e nunca entra no código.
+**Clima:** precisa de uma chave própria da [OpenWeather](https://openweathermap.org/api). Há duas formas, nunca colocando a chave no código:
+
+- **Com servidor local (recomendado):** a chave fica numa variável de ambiente e o `server.js` faz o proxy. Requer Node 18+.
+
+  ```bash
+  OPENWEATHER_API_KEY=sua_chave node 03-clima/server.js
+  ```
+
+  No PowerShell: `$env:OPENWEATHER_API_KEY="sua_chave"; node 03-clima/server.js`. Depois abra `http://localhost:3000`.
+- **Sem servidor (ex.: GitHub Pages):** abra a página, cole a chave no campo e ela fica salva só no `localStorage` do seu navegador.
 
 ## Testes e validação
 

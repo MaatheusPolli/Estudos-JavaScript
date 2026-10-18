@@ -15,25 +15,19 @@ document.querySelector('.busca').addEventListener('submit', async (event)=>{
     event.preventDefault();
 
     let input = document.querySelector(`#searchInput`).value;
-    let apiKey = getApiKey();
-
-    if(!apiKey){
-        clearInfo();
-        showWarnings('Informe sua chave da OpenWeather acima para buscar o clima.');
-        return;
-    }
 
     if(input !== ''){
         clearInfo();
         showWarnings('Carregando...');
 
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(input)}&appid=${encodeURIComponent(apiKey)}&units=metric&lang=pt_br`
-
         try {
-            /*await > faz a requisição e aguarda pra atribuir resultado */
-            let results = await fetch(url);
-            /*Converto o resultado para Json*/
-            let json    = await results.json();
+            let json = await fetchWeather(input);
+
+            if(json === null){
+                clearInfo();
+                showWarnings('Informe sua chave da OpenWeather acima para buscar o clima.');
+                return;
+            }
 
             /*Stats code 200 é que teve retorno (a API devolve cod como número ou string)*/
             if(Number(json.cod) === 200) {
@@ -58,6 +52,25 @@ document.querySelector('.busca').addEventListener('submit', async (event)=>{
         }
     }
 });
+
+// Prioridade: servidor local (server.js, chave em variável de ambiente).
+// Se ele não estiver rodando, usa a chave salva no navegador.
+async function fetchWeather(city){
+    try {
+        let proxy = await fetch(`/api/weather?q=${encodeURIComponent(city)}`);
+        // 404: página publicada sem servidor; 500: servidor sem a variável de ambiente
+        if(proxy.status !== 404 && proxy.status !== 500) return proxy.json();
+    } catch (error) {
+        // servidor não disponível: segue para a chave do navegador
+    }
+
+    let apiKey = getApiKey();
+    if(!apiKey) return null;
+
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${encodeURIComponent(apiKey)}&units=metric&lang=pt_br`;
+    let results = await fetch(url);
+    return results.json();
+}
 
 function getApiKey(){
     try {
