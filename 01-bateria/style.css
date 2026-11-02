@@ -3,67 +3,170 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root {
+    --bg: #0d0f14;
+    --panel: #171a22;
+    --panel-edge: #262b37;
+    --pad: #1f2430;
+    --text: #e8ebf2;
+    --muted: #7d8597;
+    --accent: #ff5d73;
+    --accent-2: #ffb03b;
+}
+
 body {
     display: flex;
     min-height: 100vh;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #333;
-    font-family: Arial, Helvetica, sans-serif;
+    gap: 24px;
+    padding: 24px 16px;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(255, 93, 115, .18), transparent 40%),
+        radial-gradient(circle at 85% 90%, rgba(255, 176, 59, .14), transparent 45%),
+        var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', system-ui, sans-serif;
 }
 
-h1 {
-    color: #FFF;
-    margin-bottom: 20px;
+.machine {
+    width: 100%;
+    max-width: 380px;
+    padding: 24px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #1c2029, var(--panel));
+    border: 1px solid var(--panel-edge);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .05);
 }
+
+.machine__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.machine__header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -.5px;
+}
+.machine__model {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+}
+.led {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #3a3f4b;
+    transition: background .1s, box-shadow .1s;
+}
+.led.on {
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+}
+
+.hint {
+    margin: 6px 0 20px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
 .keys {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 12px;
 }
 .key {
-    width: 80px;
-    height: 80px;
-    border: 2px solid #FFF;
-    color: #FFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #262c3a, var(--pad));
+    box-shadow: 0 6px 0 #0a0c10, inset 0 1px 0 rgba(255, 255, 255, .06);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: transform .08s, box-shadow .08s, background .15s, color .15s;
+}
+.key:hover {
+    background: linear-gradient(180deg, #2d3444, #232937);
+}
+.key:focus-visible {
+    outline: 2px solid var(--accent-2);
+    outline-offset: 3px;
 }
 .key.active {
-    border: 2px solid #FF0;
-    color: #FF0;
+    transform: translateY(4px);
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 2px 0 #0a0c10, 0 0 28px rgba(255, 93, 115, .55);
 }
 
 .composer {
-    width: 260px;
-    margin-top: 20px;
+    margin-top: 28px;
+}
+.composer label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+}
+.composer__row {
+    display: flex;
+    gap: 8px;
 }
 .composer #input {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--panel-edge);
+    background: #0f1218;
+    color: var(--accent-2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
     outline: none;
-    font-size: 17px;
-    padding: 10px 15px;
+    transition: border-color .15s;
+}
+.composer #input::placeholder {
+    color: #4a5163;
+}
+.composer #input:focus {
+    border-color: var(--accent-2);
 }
 .composer button {
-    width: 100%;
-    height: 40px;
-    background: none;
-    border: 2px solid #FFF;
-    color: #FFF;
-    font-size: 16px;
-    margin-top: 10px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
+    transition: filter .15s, transform .08s;
 }
 .composer button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+}
+.composer button:active {
+    transform: scale(.97);
 }
 
-footer {
-    margin-top: 20px;
-    color: #FFF;
-    font-size: 13px;
+.back {
+    color: var(--muted);
+    font-size: 14px;
+    text-decoration: none;
+}
+.back:hover {
+    color: var(--text);
 }

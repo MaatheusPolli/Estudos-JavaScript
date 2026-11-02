@@ -2,31 +2,47 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bateria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Bateria</h1>
+    <main class="machine">
+        <header class="machine__header">
+            <span class="led"></span>
+            <h1>Bateria</h1>
+            <span class="machine__model">DRUM&nbsp;PAD</span>
+        </header>
 
-    <div class="keys">
-        <div data-key="keyq" class="key">Q</div>
-        <div data-key="keyw" class="key">W</div>
-        <div data-key="keye" class="key">E</div>
+        <p class="hint">Toque nos pads ou use o teclado</p>
 
-        <div data-key="keya" class="key">A</div>
-        <div data-key="keys" class="key">S</div>
-        <div data-key="keyd" class="key">D</div>
+        <div class="keys">
+            <button type="button" data-key="keyq" class="key">Q</button>
+            <button type="button" data-key="keyw" class="key">W</button>
+            <button type="button" data-key="keye" class="key">E</button>
 
-        <div data-key="keyz" class="key">Z</div>
-        <div data-key="keyx" class="key">X</div>
-        <div data-key="keyc" class="key">C</div>
-    </div>
-    <div class="composer">
-        <input type="text" id="input" placeholder="Faça uma composição..." />
-        <button>Tocar</button>
-    </div>
+            <button type="button" data-key="keya" class="key">A</button>
+            <button type="button" data-key="keys" class="key">S</button>
+            <button type="button" data-key="keyd" class="key">D</button>
+
+            <button type="button" data-key="keyz" class="key">Z</button>
+            <button type="button" data-key="keyx" class="key">X</button>
+            <button type="button" data-key="keyc" class="key">C</button>
+        </div>
+
+        <form class="composer">
+            <label for="input">Sequenciador</label>
+            <div class="composer__row">
+                <input type="text" id="input" placeholder="ex.: qwe asd zxc" autocomplete="off" spellcheck="false" />
+                <button type="submit">▶ Tocar</button>
+            </div>
+        </form>
+    </main>
+
+    <a class="back" href="../">← Voltar à galeria</a>
 
     <audio id="s_keyq" src="sounds/keyq.wav"></audio>
     <audio id="s_keyw" src="sounds/keyw.wav"></audio>
@@ -37,7 +53,7 @@
     <audio id="s_keyz" src="sounds/keyz.wav"></audio>
     <audio id="s_keyx" src="sounds/keyx.wav"></audio>
     <audio id="s_keyc" src="sounds/keyc.wav"></audio>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
