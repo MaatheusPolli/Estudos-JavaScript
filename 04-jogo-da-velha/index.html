@@ -2,40 +2,46 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da velha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Jogo da velha</h1>
+    <main class="card">
+        <h1>Jogo da velha</h1>
 
-    <div class="area">
-        <div tabindex="0" role="button" data-item="a1" class="item b r"></div>
-        <div tabindex="0" role="button" data-item="a2" class="item b r"></div>
-        <div tabindex="0" role="button" data-item="a3" class="item b"></div>
-
-        <div tabindex="0" role="button" data-item="b1" class="item b r"></div>
-        <div tabindex="0" role="button" data-item="b2" class="item b r"></div>
-        <div tabindex="0" role="button" data-item="b3" class="item b"></div>
-
-        <div tabindex="0" role="button" data-item="c1" class="item r"></div>
-        <div tabindex="0" role="button" data-item="c2" class="item r"></div>
-        <div tabindex="0" role="button" data-item="c3" class="item"></div>
-    </div>
-
-    <div class="info">
-        <div class="infoitem">
-            <div class="infotitulo">A vez é:</div>
-            <div class="infocorpo vez">--</div>
+        <div class="info">
+            <div class="infoitem">
+                <div class="infotitulo">A vez é</div>
+                <div class="infocorpo vez">--</div>
+            </div>
+            <div class="infoitem">
+                <div class="infotitulo">Resultado</div>
+                <div class="infocorpo resultado">--</div>
+            </div>
         </div>
-        <div class="infoitem">
-            <div class="infotitulo">Vencedor:</div>
-            <div class="infocorpo resultado">--</div>
-        </div>
-    </div>
 
-    <button class="reset" type="button">Resetar</button>
+        <div class="area">
+            <div tabindex="0" role="button" data-item="a1" class="item"></div>
+            <div tabindex="0" role="button" data-item="a2" class="item"></div>
+            <div tabindex="0" role="button" data-item="a3" class="item"></div>
+
+            <div tabindex="0" role="button" data-item="b1" class="item"></div>
+            <div tabindex="0" role="button" data-item="b2" class="item"></div>
+            <div tabindex="0" role="button" data-item="b3" class="item"></div>
+
+            <div tabindex="0" role="button" data-item="c1" class="item"></div>
+            <div tabindex="0" role="button" data-item="c2" class="item"></div>
+            <div tabindex="0" role="button" data-item="c3" class="item"></div>
+        </div>
+
+        <button class="reset" type="button">↻ Nova partida</button>
+    </main>
+
+    <a class="back" href="../">← Voltar à galeria</a>
 
     <script src="logic.js"></script>
     <script src="script.js"></script>

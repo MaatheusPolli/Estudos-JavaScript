@@ -9,12 +9,12 @@ function calculatePoints(correctAnswers, totalQuestions){
 // Mensagem e cor do resultado de acordo com o percentual
 function getFeedback(points){
     if(points < 30){
-        return { text: 'Tá ruim em?!', color: '#FF0000' };
+        return { text: 'Tá ruim em?!', color: '#ff5d73' };
     }
     if(points < 70){
-        return { text: 'Quase lá...', color: '#FFFF00' };
+        return { text: 'Quase lá...', color: '#ffb03b' };
     }
-    return { text: 'Parabéns!!', color: '#0D630D' };
+    return { text: 'Parabéns!!', color: '#22c55e' };
 }
 
 if(typeof module !== 'undefined'){

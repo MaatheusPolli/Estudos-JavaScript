@@ -14,7 +14,7 @@ function updateClock(){
 
     let segundoDeg = ((360/60) * second ) - 90;
     let minuteDeg  = ((360/60) * minute ) - 90;
-    let hourDeg  = ((360/12) * hour ) - 90;;
+    let hourDeg  = ((360/12) * (hour % 12 + minute / 60)) - 90;
     
     segundoElement.style.transform = `rotate(${segundoDeg}deg)`;
     minutoElement.style.transform  = `rotate(${minuteDeg}deg)`;

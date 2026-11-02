@@ -2,32 +2,39 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="progress">
-        <div class="progress--bar"></div>
-    </div>
+    <main class="card">
+        <header class="card__header">
+            <h1>Quiz de JavaScript</h1>
+            <div class="progress">
+                <div class="progress--bar"></div>
+            </div>
+        </header>
 
-    <h1>Quiz</h1>
+        <div class="questionArea">
+            <div class="question">...</div>
+            <div class="options">
 
-    <div class="questionArea">
-        <div class="question">...</div>
-        <div class="options">
-            
+            </div>
         </div>
-    </div>
 
-    <div class="scoreArea">
-        <img src="prize.png" alt="Troféu" class="prizeImage" />
-        <div class="scoreText1">Parabéns!</div>
-        <div class="scorePct">Acertou 99%</div>
-        <div class="scoreText2">Você respondeu 9 questões e acertou 8.</div>
-        <button>Fazer novamente</button>
-    </div>
+        <div class="scoreArea">
+            <img src="prize.png" alt="Troféu" class="prizeImage" />
+            <div class="scoreText1">Parabéns!</div>
+            <div class="scorePct">Acertou 99%</div>
+            <div class="scoreText2">Você respondeu 9 questões e acertou 8.</div>
+            <button>↻ Fazer novamente</button>
+        </div>
+    </main>
+
+    <a class="back" href="../">← Voltar à galeria</a>
 
     <script src="questions.js"></script>
     <script src="logic.js"></script>

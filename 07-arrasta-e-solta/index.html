@@ -2,25 +2,36 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arrastar e Soltar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Arrastar e Soltar</h1>
+    <main class="card">
+        <h1>Arrastar e Soltar</h1>
+        <p class="hint">Arraste os blocos para as casas na ordem 1, 2, 3.</p>
 
-    <div class="neutralArea">
-        <div class="item" draggable="true">1</div>
-        <div class="item" draggable="true">2</div>
-        <div class="item" draggable="true">3</div>
-    </div>
+        <div class="label">Blocos</div>
+        <div class="neutralArea">
+            <div class="item" data-n="1" draggable="true">1</div>
+            <div class="item" data-n="2" draggable="true">2</div>
+            <div class="item" data-n="3" draggable="true">3</div>
+        </div>
 
-    <div class="areas">
-        <div class="area" data-name="a"></div>
-        <div class="area" data-name="b"></div>
-        <div class="area" data-name="c"></div>
-    </div>
+        <div class="label">Casas</div>
+        <div class="areas">
+            <div class="area" data-name="a"></div>
+            <div class="area" data-name="b"></div>
+            <div class="area" data-name="c"></div>
+        </div>
+
+        <p class="success">✓ Sequência correta!</p>
+    </main>
+
+    <a class="back" href="../">← Voltar à galeria</a>
 
     <script src="script.js"></script>
 </body>

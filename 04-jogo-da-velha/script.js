@@ -78,12 +78,14 @@ function renderSquare(){
     for(let i in square){
         let item = document.querySelector(`div[data-item=${i}]`);
         item.innerHTML = square[i];
+        item.dataset.mark = square[i];
     }
     checkGame();
 }
 
 function renderInfo(){
-    document.querySelector('.vez').innerHTML = player;
+    document.querySelector(".vez").innerHTML = player;
+    document.querySelector(".vez").dataset.mark = player;
     document.querySelector('.resultado').innerHTML = warning;
 }
 //change player
