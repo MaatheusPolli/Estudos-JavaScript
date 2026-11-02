@@ -25,7 +25,8 @@ document.querySelector('.busca').addEventListener('submit', async (event)=>{
 
             if(json === null){
                 clearInfo();
-                showWarnings('Informe sua chave da OpenWeather acima para buscar o clima.');
+                showWarnings('Informe sua chave da OpenWeather abaixo para buscar o clima.');
+                document.querySelector('.config-box').open = true;
                 return;
             }
 

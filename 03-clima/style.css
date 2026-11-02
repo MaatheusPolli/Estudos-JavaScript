@@ -4,121 +4,239 @@
     box-sizing: border-box;
 }
 
+:root {
+    --text: #f4f7ff;
+    --muted: rgba(244, 247, 255, .65);
+    --glass: rgba(255, 255, 255, .12);
+    --glass-edge: rgba(255, 255, 255, .22);
+}
+
 body {
     display: flex;
     min-height: 100vh;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #333;
-    font-family: Arial, Helvetica, sans-serif;
+    gap: 24px;
+    padding: 24px 16px;
+    background: linear-gradient(160deg, #1e3c72 0%, #2a5298 45%, #6a82fb 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: 'Outfit', system-ui, sans-serif;
 }
 
-h1 {
-    color: #FFF;
-    margin: 20px 0;
+.app {
+    width: 100%;
+    max-width: 380px;
+    padding: 28px 24px;
+    border-radius: 28px;
+    background: var(--glass);
+    border: 1px solid var(--glass-edge);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 30px 60px rgba(10, 20, 50, .35);
+}
+
+.app__header h1 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -.5px;
+}
+.app__header p {
+    margin-top: 2px;
+    font-size: 14px;
+    color: var(--muted);
 }
 
 .busca {
     display: flex;
-    width: 300px;
+    gap: 8px;
+    margin-top: 20px;
 }
 .busca #searchInput {
     flex: 1;
-    padding: 10px;
+    min-width: 0;
+    padding: 12px 16px;
+    border: 1px solid var(--glass-edge);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .9);
+    color: #1b2440;
+    font-family: inherit;
+    font-size: 16px;
     outline: none;
-    font-size: 15px;
-    border-radius: 5px;
-    border: 0;
+}
+.busca #searchInput:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .35);
 }
 .busca button {
-    padding: 10px;
-    font-size: 15px;
-    border: 0;
-    background-color: #555;
-    color: #FFF;
-    border-radius: 5px;
-    margin-left: 10px;
+    width: 48px;
+    border: none;
+    border-radius: 14px;
+    background: #ffc857;
+    color: #1b2440;
+    display: grid;
+    place-items: center;
     cursor: pointer;
+    transition: transform .08s, filter .15s;
 }
-.busca button:hover {
-    background-color: #444;
+.busca button:hover { filter: brightness(1.05); }
+.busca button:active { transform: scale(.95); }
+
+.aviso {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+}
+.aviso:not(:empty) {
+    margin-top: 16px;
 }
 
 .resultado {
-    width: 300px;
     display: none;
-    border: 1px dotted #FFF;
     margin-top: 20px;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .1);
+    border: 1px solid var(--glass-edge);
+    animation: surgir .35s ease;
+}
+@keyframes surgir {
+    from { opacity: 0; transform: translateY(8px); }
 }
 
 .titulo {
-    width: 100%;
-    color: #FFF;
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 22px;
+    font-weight: 600;
     text-align: center;
-    padding: 20px;
 }
 
 .info {
-    display: flex;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
 }
-.info .temp {
-    flex: 1;
-    text-align: center;
-}
+.info .temp,
 .info .vento {
-    flex: 1;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
 }
-.tempTitulo,
-.ventoTitulo {
-    color: #777;
-    font-size: 16px;
-    margin-bottom: 5px;
+.temp img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: -8px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .2));
 }
 .tempInfo,
 .ventoInfo {
-    color: #FFF;
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 1.1;
 }
-.tempInfo sup {
-    font-size: 15px;
-    font-weight: normal;
-}
+.tempInfo sup,
 .ventoInfo span {
-    font-size: 15px;
-    font-weight: normal;
+    font-size: 14px;
+    color: var(--muted);
 }
+.tempTitulo,
+.ventoTitulo {
+    margin-top: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+}
+
 .ventoArea {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #FFF;
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 12px;
     border-radius: 50%;
-    margin: auto;
-    margin-top: 20px;
-    padding-left: 25px;
-    padding-top: 25px;
+    border: 2px solid var(--glass-edge);
+    background: rgba(255, 255, 255, .06);
+}
+.ventoArea .n {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--muted);
 }
 .ventoPonto {
-    width: 15px;
-    height: 1px;
-    background-color: #FFF;
-    transform-origin: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 26px;
+    height: 3px;
+    margin-top: -1.5px;
+    border-radius: 3px;
+    background: #ffc857;
+    transform-origin: left center;
+    transition: transform .6s ease;
+}
+.ventoPonto::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -3.5px;
+    border-left: 7px solid #ffc857;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
 }
 
-.aviso {
-    color: #FFF;
-    padding-top: 20px;
-}
-
-footer {
+.config-box {
     margin-top: 20px;
-    color: #FFF;
+    font-size: 14px;
+}
+.config-box summary {
+    cursor: pointer;
+    color: var(--muted);
+}
+.config-box summary:hover {
+    color: var(--text);
+}
+.config label {
+    display: block;
+    margin: 10px 0 8px;
+    color: var(--muted);
     font-size: 13px;
 }
+.config__row {
+    display: flex;
+    gap: 8px;
+}
+.config #apiKey {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-edge);
+    background: rgba(0, 0, 0, .15);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+.config #apiKey::placeholder { color: var(--muted); }
+.config button {
+    padding: 0 14px;
+    border: 1px solid var(--glass-edge);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .15);
+    color: var(--text);
+    font-family: inherit;
+    cursor: pointer;
+}
+.config button:hover { background: rgba(255, 255, 255, .25); }
+
+.back {
+    color: var(--muted);
+    font-size: 14px;
+    text-decoration: none;
+}
+.back:hover { color: var(--text); }

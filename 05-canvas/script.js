@@ -1,5 +1,5 @@
 // Dados Iniciais
-let currentColor = 'black';
+let currentColor = '#1b1f2a';
 let screen = document.querySelector('#tela');
 let ctx = screen.getContext('2d');
 let canDraw = false;
@@ -21,13 +21,13 @@ document.querySelector('.clear').addEventListener('click', clearScreen);
 
 // Funções
 function colorClickEvent(e) {
-    let color = e.target.getAttribute('data-color');
+    let color = e.currentTarget.getAttribute('data-color');
     currentColor = color;
 
     // remove quem estava ativo(cor)
     document.querySelector('.color.active').classList.remove('active');
     // adiciona nova cor selecionada
-    e.target.classList.add('active');
+    e.currentTarget.classList.add('active');
 };
 
 // Converte a posição do ponteiro (tela) para coordenadas do canvas,
@@ -64,8 +64,9 @@ function pointerUpEvent(e){
 function draw(x,y){
     //desenhar
     ctx.beginPath();
-    ctx.lineWidth = 5; //espessura da linha
+    ctx.lineWidth = 6; //espessura da linha
     ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
     ctx.moveTo(mouseX, mouseY);//move pro inicio
     ctx.lineTo(x, y);//desenha do inicio até o point capturado
     ctx.closePath();

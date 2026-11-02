@@ -2,26 +2,44 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desenhando no Canvas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Desenhando no Canvas</h1>
+    <main class="studio">
+        <header class="studio__header">
+            <div>
+                <h1>Desenhando no Canvas</h1>
+                <p>Desenhe com mouse, dedo ou caneta</p>
+            </div>
+            <button class="clear" type="button">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>
+                Limpar
+            </button>
+        </header>
 
-    <canvas id="tela" width="800" height="400"></canvas>
+        <div class="board">
+            <canvas id="tela" width="800" height="400"></canvas>
+        </div>
 
-    <div class="colorArea">
-        <div data-color="black" style="background-color: black" class="color active"></div>
-        <div data-color="blue" style="background-color: blue" class="color"></div>
-        <div data-color="red" style="background-color: red" class="color"></div>
-        <div data-color="green" style="background-color: green" class="color"></div>
-        <div data-color="yellow" style="background-color: yellow" class="color"></div>
-        <div data-color="gray" style="background-color: gray" class="color"></div>
-    </div>
+        <div class="toolbar">
+            <div class="colorArea" role="group" aria-label="Cores">
+                <button type="button" data-color="#1b1f2a" style="--c: #1b1f2a" class="color active" aria-label="Preto"></button>
+                <button type="button" data-color="#3b82f6" style="--c: #3b82f6" class="color" aria-label="Azul"></button>
+                <button type="button" data-color="#ef4444" style="--c: #ef4444" class="color" aria-label="Vermelho"></button>
+                <button type="button" data-color="#22c55e" style="--c: #22c55e" class="color" aria-label="Verde"></button>
+                <button type="button" data-color="#facc15" style="--c: #facc15" class="color" aria-label="Amarelo"></button>
+                <button type="button" data-color="#a855f7" style="--c: #a855f7" class="color" aria-label="Roxo"></button>
+                <button type="button" data-color="#9ca3af" style="--c: #9ca3af" class="color" aria-label="Cinza"></button>
+            </div>
+        </div>
+    </main>
 
-    <button class="clear">Limpar Quadro</button>
+    <a class="back" href="../">← Voltar à galeria</a>
 
     <script src="script.js"></script>
 </body>

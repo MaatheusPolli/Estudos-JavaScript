@@ -2,45 +2,62 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clima</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Clima</h1>
+    <main class="app">
+        <header class="app__header">
+            <h1>Clima</h1>
+            <p>Temperatura e vento de qualquer cidade</p>
+        </header>
 
-    <form class="config">
-        <label for="apiKey">Chave da OpenWeather (salva só neste navegador)</label>
-        <input type="password" id="apiKey" autocomplete="off" placeholder="Cole sua chave" />
-        <button>Salvar chave</button>
-    </form>
+        <form class="busca">
+            <input type="search" id="searchInput" placeholder="Buscar cidade… ex.: Jaú" autocomplete="off" />
+            <button aria-label="Buscar">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            </button>
+        </form>
 
-    <form class="busca">
-        <input type="search" id="searchInput" placeholder="Digite o local que deseja" />
-        <button>Buscar</button>
-    </form>
+        <div class="aviso"></div>
 
-    <div class="resultado">
-        <div class="titulo">--</div>
+        <section class="resultado">
+            <div class="titulo">--</div>
 
-        <div class="info">
-            <div class="temp">
-                <div class="tempTitulo">Temperatura</div>
-                <div class="tempInfo">-- <sup>ºC</sup></div>
-                <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Ícone do tempo" />
-            </div>
-            <div class="vento">
-                <div class="ventoTitulo">Vento</div>
-                <div class="ventoInfo">-- <span>km/h</span></div>
-                <div class="ventoArea">
-                    <div class="ventoPonto" style="transform: rotate(0deg)"></div>
+            <div class="info">
+                <div class="temp">
+                    <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Ícone do tempo" />
+                    <div class="tempInfo">-- <sup>ºC</sup></div>
+                    <div class="tempTitulo">Temperatura</div>
+                </div>
+                <div class="vento">
+                    <div class="ventoArea">
+                        <span class="n">N</span>
+                        <div class="ventoPonto" style="transform: rotate(0deg)"></div>
+                    </div>
+                    <div class="ventoInfo">-- <span>km/h</span></div>
+                    <div class="ventoTitulo">Vento</div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="aviso"></div>
+        <details class="config-box">
+            <summary>Chave da OpenWeather</summary>
+            <form class="config">
+                <label for="apiKey">Fica salva só neste navegador.</label>
+                <div class="config__row">
+                    <input type="password" id="apiKey" autocomplete="off" placeholder="Cole sua chave" />
+                    <button>Salvar</button>
+                </div>
+            </form>
+        </details>
+    </main>
+
+    <a class="back" href="../">← Voltar à galeria</a>
 
     <script src="script.js"></script>
 </body>
